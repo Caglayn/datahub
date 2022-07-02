@@ -1,0 +1,8 @@
+server:
+  port: ${DATA_SERVICE_PORT}
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGO_DB_URI}
+      database: ${MONGO_DATA_SERVICE_BACKUP_DBNAME}
