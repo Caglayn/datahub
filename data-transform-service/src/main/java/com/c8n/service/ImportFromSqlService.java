@@ -4,5 +4,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface ImportFromSqlService {
-    List<Map<String, Object>> importFromQuery(String queryString);
+    List<Map<String, Object>> importFromQuery(String collectionName, String queryString);
 }

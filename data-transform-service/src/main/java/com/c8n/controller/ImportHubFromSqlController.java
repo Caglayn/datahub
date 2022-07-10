@@ -19,10 +19,10 @@ public class ImportHubFromSqlController {
     }
 
     @GetMapping("/query")
-    public SuccessResponse importFromQuery(@RequestParam String query){
+    public SuccessResponse importFromQuery(@RequestParam String query, @RequestParam String collectionName){
         timer.startTimer();
         return SuccessResponse.builder()
-                .body(importService.importFromQuery(query))
+                .body(importService.importFromQuery(collectionName, query))
                 .status(HttpStatus.OK.value())
                 .message(HttpStatus.OK.getReasonPhrase())
                 .elapsedTime(timer.getTimeAsSecond())

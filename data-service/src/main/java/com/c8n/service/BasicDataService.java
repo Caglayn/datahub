@@ -13,6 +13,7 @@ public interface BasicDataService {
     Map<String, String> getRow(String collectionName, String rowId);
     Map<String, Map<String, String>> getAllRows(String collectionName);
     boolean addColumns(String collectionName, Set<String> columns);
+    boolean addAllColumns(String collectionName, Set<String> columns);
     boolean deleteColumn(String collectionName, String columnName);
     Set<String> getAllColumns(String collectionName);
 }

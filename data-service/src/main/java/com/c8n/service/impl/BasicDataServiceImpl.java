@@ -1,7 +1,6 @@
 package com.c8n.service.impl;
 
 import com.c8n.constants.CollectionStatus;
-import com.c8n.exception.CollectionNotFoundException;
 import com.c8n.exception.RowNotFound;
 import com.c8n.model.BasicDataHub;
 import com.c8n.model.dto.UpdateRowDto;
@@ -98,6 +97,15 @@ public class BasicDataServiceImpl implements BasicDataService {
         }
 
         columns.forEach(i -> basicDataHub.getHub().get(collectionName.toLowerCase()).getColumns().add(i.toLowerCase()));
+        return true;
+    }
+
+    @Override
+    public boolean addAllColumns(String collectionName, Set<String> columns) {
+        hubUtil.checkCollectionExist(collectionName.toLowerCase());
+
+        basicDataHub.getHub().get(collectionName.toLowerCase()).getColumns().addAll(columns);
+
         return true;
     }
 

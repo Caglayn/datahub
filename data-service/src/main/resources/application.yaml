@@ -6,3 +6,12 @@ spring:
     mongodb:
       uri: ${MONGO_DB_URI}
       database: ${MONGO_DATA_SERVICE_BACKUP_DBNAME}
+  kafka:
+    listener:
+      missing-topics-fatal: false
+    consumer:
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"

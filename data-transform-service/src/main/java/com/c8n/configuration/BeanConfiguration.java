@@ -3,6 +3,7 @@ package com.c8n.configuration;
 import static com.c8n.constants.DbConstants.*;
 
 import com.c8n.util.TimeUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
@@ -50,5 +51,10 @@ public class BeanConfiguration {
     @RequestScope
     public TimeUtil timer(){
         return TimeUtil.builder().build();
+    }
+
+    @Bean
+    public ObjectMapper objectMapper(){
+        return new ObjectMapper();
     }
 }

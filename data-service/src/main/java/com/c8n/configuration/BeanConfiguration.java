@@ -2,10 +2,13 @@ package com.c8n.configuration;
 
 import com.c8n.model.BasicDataHub;
 import com.c8n.util.TimeUtil;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.annotation.RequestScope;
 
+import java.util.Map;
 import java.util.TreeMap;
 
 @Configuration
@@ -23,5 +26,15 @@ public class BeanConfiguration {
     @RequestScope
     public TimeUtil timer(){
         return TimeUtil.builder().build();
+    }
+
+    @Bean
+    public ObjectMapper objectMapper(){
+        return new ObjectMapper();
+    }
+
+    @Bean
+    public TypeReference<Map<String, String>> typeReference(){
+        return new TypeReference<Map<String, String>>() {};
     }
 }
