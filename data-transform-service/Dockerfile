@@ -1,4 +1,4 @@
-FROM caglayn/debianjdk18:latest
+FROM caglayn/debianjdk18
 RUN mkdir /home/javaapp
 WORKDIR /home/javaapp
 COPY target/*.jar datatransformserviceapp.jar
