@@ -33,12 +33,12 @@ public class BasicDataQueryController {
                 .build();
     }
 
-    @PostMapping("/test")
+    @PostMapping("/test2")
     public SuccessResponse test(@RequestParam String testString){
         timer.startTimer();
         return SuccessResponse
                 .builder()
-                .body("test endpoint :" + testString)
+                .body("test endpoint222222222 :" + testString)
                 .status(HttpStatus.OK.value())
                 .message(HttpStatus.OK.getReasonPhrase())
                 .elapsedTime(timer.getTimeAsSecond())
