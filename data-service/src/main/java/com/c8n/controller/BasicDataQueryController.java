@@ -32,4 +32,16 @@ public class BasicDataQueryController {
                 .elapsedTime(timer.getTimeAsSecond())
                 .build();
     }
+
+    @GetMapping
+    public SuccessResponse test(){
+        timer.startTimer();
+        return SuccessResponse
+                .builder()
+                .body("test endpoint.")
+                .status(HttpStatus.OK.value())
+                .message(HttpStatus.OK.getReasonPhrase())
+                .elapsedTime(timer.getTimeAsSecond())
+                .build();
+    }
 }
