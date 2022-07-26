@@ -37,7 +37,7 @@ public class BasicDataCollectionServiceImpl implements BasicDataCollectionServic
                         .id(UUID.randomUUID())
                         .createdDate(System.currentTimeMillis())
                         .collectionName(collectionName.toLowerCase())
-                        .columns(new HashSet<>())
+                        .columns(new TreeSet<>())
                         .collection(new TreeMap<>(String.CASE_INSENSITIVE_ORDER))
                         .indexedColumns(new HashSet<>())
                         .build());
