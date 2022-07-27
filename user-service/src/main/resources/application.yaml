@@ -1,0 +1,8 @@
+server:
+  port: ${USER_SERVICE_PORT}
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGO_USER_DB_URI}
+      database: ${MONGO_USER_DB_DBNAME}
