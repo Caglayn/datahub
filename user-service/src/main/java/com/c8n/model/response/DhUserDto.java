@@ -1,9 +1,6 @@
-package com.c8n.model.entity;
+package com.c8n.model.response;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Set;
 
@@ -13,12 +10,10 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(value = "users")
-public class DhUser {
-    @Id
+public class DhUserDto {
     private String userName;
-    private String password;
     private String eMail;
+    private String token;
     private Set<String> roles;
     private long createdDate;
     private boolean isActive;

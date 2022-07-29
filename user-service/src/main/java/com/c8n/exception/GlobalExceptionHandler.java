@@ -21,4 +21,28 @@ public class GlobalExceptionHandler {
                         .message(exception.getMessage())
                         .build());
     }
+
+    @ExceptionHandler(DhUserNotFound.class)
+    @Order(value = -1)
+    public ResponseEntity<ExceptionResponse> handleDhUserNotFoundException(DhUserNotFound exception){
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(ExceptionResponse
+                        .builder()
+                        .statusCode(exception.getStatusCode())
+                        .message(exception.getMessage())
+                        .build());
+    }
+
+    @ExceptionHandler(InvalidCredentials.class)
+    @Order(value = -1)
+    public ResponseEntity<ExceptionResponse> handleInvalidCredentialsException(InvalidCredentials exception){
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(ExceptionResponse
+                        .builder()
+                        .statusCode(exception.getStatusCode())
+                        .message(exception.getMessage())
+                        .build());
+    }
 }
