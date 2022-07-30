@@ -4,6 +4,7 @@ import com.c8n.constants.DhUserStatus;
 import com.c8n.exception.UserNameAlreadyInUse;
 import com.c8n.model.entity.DhUser;
 import com.c8n.model.request.SaveUserDto;
+import com.c8n.model.response.DhUserDto;
 import com.c8n.repository.DhUserRepository;
 import com.c8n.service.DhUserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -44,8 +45,21 @@ public class DhUserServiceImpl implements DhUserService {
     }
 
     @Override
-    public DhUser getUser(String userName) {
-        return userRepository.findById(userName).orElse(null);
+    public DhUserDto getUser(String userName) {
+        Optional<DhUser> userOptional = userRepository.findById(userName);
+        if (userOptional.isPresent()){
+            DhUser user = userOptional.get();
+            return DhUserDto.builder()
+                    .userName(user.getUserName())
+                    .eMail(user.getEMail())
+                    .roles(user.getRoles())
+                    .createdDate(user.getCreatedDate())
+                    .isActive(user.isActive())
+                    .isLocked(user.isLocked())
+                    .build();
+        } else {
+            return null;
+        }
     }
 
     @Override

@@ -7,7 +7,10 @@ public class RestApiUrls {
     public static final String COLLECTION = "/collection";
     public static final String ROW = "/row";
     public static final String QUERY = "/query";
+    public static final String AUTH = "/auth";
 
+
+    public static final String SIGNIN = "/signin";
     public static final String SAVE = "/save";
     public static final String UPDATE = "/update";
     public static final String DELETE = "/delete";

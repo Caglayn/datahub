@@ -5,6 +5,7 @@ import static com.c8n.constants.RestApiUrls.*;
 import com.c8n.model.request.SaveUserDto;
 import com.c8n.model.response.SuccessResponse;
 import com.c8n.service.AuthService;
+import com.c8n.service.DhUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(API+VERSION+AUTH)
 public class AuthController {
     private final AuthService authService;
+    private final DhUserService userService;
 
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService, DhUserService userService) {
         this.authService = authService;
+        this.userService = userService;
     }
 
     @PostMapping(SAVE)
@@ -43,6 +46,16 @@ public class AuthController {
         return SuccessResponse
                 .builder()
                 .body(authService.validateToken(token))
+                .status(HttpStatus.OK.value())
+                .message(HttpStatus.OK.getReasonPhrase())
+                .build();
+    }
+
+    @GetMapping("/userdetail")
+    public SuccessResponse getUserDetail(@RequestParam String username){
+        return SuccessResponse
+                .builder()
+                .body(userService.getUser(username))
                 .status(HttpStatus.OK.value())
                 .message(HttpStatus.OK.getReasonPhrase())
                 .build();
