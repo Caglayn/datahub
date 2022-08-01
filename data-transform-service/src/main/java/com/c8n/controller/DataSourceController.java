@@ -4,12 +4,14 @@ import com.c8n.model.dto.DataSourceDto;
 import com.c8n.model.response.SuccessResponse;
 import com.c8n.service.DataSourceService;
 import com.c8n.util.TimeUtil;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ds")
 @CrossOrigin(origins = "*")
+@SecurityRequirement(name = "bearerAuth")
 public class DataSourceController {
     private final DataSourceService dataSourceService;
     private final TimeUtil timer;

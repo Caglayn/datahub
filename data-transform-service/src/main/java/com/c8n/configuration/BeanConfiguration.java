@@ -2,6 +2,7 @@ package com.c8n.configuration;
 
 import static com.c8n.constants.DbConstants.*;
 
+import com.c8n.model.Sessions;
 import com.c8n.util.TimeUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.context.annotation.RequestScope;
+
+import java.util.HashMap;
 
 @Configuration
 public class BeanConfiguration {
@@ -56,5 +59,10 @@ public class BeanConfiguration {
     @Bean
     public ObjectMapper objectMapper(){
         return new ObjectMapper();
+    }
+
+    @Bean
+    public Sessions sessions(){
+        return Sessions.builder().users(new HashMap<>()).build();
     }
 }

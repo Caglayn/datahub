@@ -8,6 +8,7 @@ import com.c8n.model.dto.UpdateRowDto;
 import com.c8n.model.response.SuccessResponse;
 import com.c8n.service.BasicDataService;
 import com.c8n.util.TimeUtil;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import java.util.Set;
 @RestController
 @RequestMapping(API+VERSION+ROW)
 @CrossOrigin(origins = "*")
+@SecurityRequirement(name = "bearerAuth")
 public class BasicDataController {
     private final BasicDataService basicDataService;
     private final TimeUtil timer;

@@ -1,6 +1,5 @@
 package com.c8n.configuration.security.user;
 
-import static com.c8n.constants.RestApiUrls.*;
 import com.c8n.model.dto.DhUserDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import static com.c8n.constants.RestApiUrls.*;
 
 @Service
 public class AuthUserService implements UserDetailsService {

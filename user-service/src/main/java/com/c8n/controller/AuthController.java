@@ -3,6 +3,7 @@ package com.c8n.controller;
 import static com.c8n.constants.RestApiUrls.*;
 
 import com.c8n.model.request.SaveUserDto;
+import com.c8n.model.response.DhUserDto;
 import com.c8n.model.response.SuccessResponse;
 import com.c8n.service.AuthService;
 import com.c8n.service.DhUserService;
@@ -52,12 +53,7 @@ public class AuthController {
     }
 
     @GetMapping("/userdetail")
-    public SuccessResponse getUserDetail(@RequestParam String username){
-        return SuccessResponse
-                .builder()
-                .body(userService.getUser(username))
-                .status(HttpStatus.OK.value())
-                .message(HttpStatus.OK.getReasonPhrase())
-                .build();
+    public DhUserDto getUserDetail(@RequestParam String username){
+        return userService.getUser(username);
     }
 }

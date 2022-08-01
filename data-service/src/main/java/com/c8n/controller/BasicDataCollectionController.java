@@ -6,6 +6,7 @@ import com.c8n.model.BasicDataHub;
 import com.c8n.model.response.SuccessResponse;
 import com.c8n.service.BasicDataCollectionService;
 import com.c8n.util.TimeUtil;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(API+VERSION+COLLECTION)
 @CrossOrigin(origins = "*")
+@SecurityRequirement(name = "bearerAuth")
 public class BasicDataCollectionController {
     private final BasicDataCollectionService collectionService;
     private final TimeUtil timer;
