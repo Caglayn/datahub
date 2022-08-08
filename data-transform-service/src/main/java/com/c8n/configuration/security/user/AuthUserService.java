@@ -1,5 +1,6 @@
 package com.c8n.configuration.security.user;
 
+import com.c8n.model.Sessions;
 import com.c8n.model.dto.DhUserDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,8 +20,11 @@ public class AuthUserService implements UserDetailsService {
 
     private final ObjectMapper objectMapper;
 
-    public AuthUserService(ObjectMapper objectMapper) {
+    private final Sessions sessions;
+
+    public AuthUserService(ObjectMapper objectMapper, Sessions sessions) {
         this.objectMapper = objectMapper;
+        this.sessions = sessions;
     }
 
     @Value("${SERVER_INTERNAL_IP}")
@@ -31,7 +35,12 @@ public class AuthUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        return getAuthUserFromUserService(userName);
+        UserDetails user = sessions.getUsers().get(userName);
+
+        if (user != null)
+            return user;
+        else
+            return getAuthUserFromUserService(userName);
     }
 
     private AuthUser getAuthUserFromUserService(String userName){

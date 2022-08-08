@@ -23,6 +23,7 @@ public class AuthController {
     }
 
     @PostMapping(SAVE)
+    @CrossOrigin(origins = "http://localhost:**")
     public SuccessResponse signUp(SaveUserDto user){
         return SuccessResponse
                 .builder()
