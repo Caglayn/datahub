@@ -1,2 +1,2 @@
 server:
-  port: ${TRANSFORM_SERVICE_PORT}
+  port: ${TRANSFORM_SERVICE_INIT_PORT}

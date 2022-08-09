@@ -1,5 +1,5 @@
 server:
-  port: ${DATA_SERVICE_PORT}
+  port: ${DATA_SERVICE_INIT_PORT}
 
 spring:
   data:
